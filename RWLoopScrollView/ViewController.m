@@ -7,8 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "RWLoopScrollView.h"
 
-@interface ViewController ()
+@interface ViewController () <RWLoopScrollViewDelegate>
+
+@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, weak) RWLoopScrollView *loopScrollView;
 
 @end
 
@@ -16,12 +20,39 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.dataSource = [NSMutableArray array];
+    for (int i = 0; i < 10; i ++) {
+        UIColor *color = [UIColor colorWithRed:arc4random_uniform(11)/10.0 green:arc4random_uniform(11)/10.0 blue:arc4random_uniform(11)/10.0 alpha:1.000];
+        [self.dataSource addObject:color];
+    }
+    
+    RWLoopScrollView *loopScrollView = [[RWLoopScrollView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 200)];
+    loopScrollView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
+    loopScrollView.delegate = self;
+    [self.view addSubview:loopScrollView];
+    self.loopScrollView = loopScrollView;
+    
+    
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSUInteger)numberOfContentInLoopScrollView:(RWLoopScrollView *)loopScrollView {
+    return self.dataSource.count;
 }
+
+- (UIView *)contentViewInLoopScrollView:(RWLoopScrollView *)loopScrollView {
+    return [[UIView alloc] init];
+}
+
+- (void)loopScrollView:(RWLoopScrollView *)loopScrollView prepareDisplayContentView:(UIView *)view forIndex:(NSUInteger)index {
+    view.backgroundColor = self.dataSource[index];
+    
+    
+    
+}
+
 
 @end

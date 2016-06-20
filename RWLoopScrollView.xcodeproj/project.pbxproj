@@ -15,6 +15,7 @@
 		2F016BEF1D17E663009A7089 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F016BED1D17E663009A7089 /* LaunchScreen.storyboard */; };
 		2F016BFA1D17E663009A7089 /* RWLoopScrollViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F016BF91D17E663009A7089 /* RWLoopScrollViewTests.m */; };
 		2F016C051D17E663009A7089 /* RWLoopScrollViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F016C041D17E663009A7089 /* RWLoopScrollViewUITests.m */; };
+		2F016C151D17E6EA009A7089 /* RWLoopScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F016C141D17E6EA009A7089 /* RWLoopScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		2F016C001D17E663009A7089 /* RWLoopScrollViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RWLoopScrollViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F016C041D17E663009A7089 /* RWLoopScrollViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RWLoopScrollViewUITests.m; sourceTree = "<group>"; };
 		2F016C061D17E663009A7089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F016C131D17E6EA009A7089 /* RWLoopScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWLoopScrollView.h; sourceTree = "<group>"; };
+		2F016C141D17E6EA009A7089 /* RWLoopScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWLoopScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,7 @@
 		2F016BDE1D17E663009A7089 /* RWLoopScrollView */ = {
 			isa = PBXGroup;
 			children = (
+				2F016C121D17E6EA009A7089 /* RWLoopScrollView */,
 				2F016BE21D17E663009A7089 /* AppDelegate.h */,
 				2F016BE31D17E663009A7089 /* AppDelegate.m */,
 				2F016BE51D17E663009A7089 /* ViewController.h */,
@@ -138,6 +142,15 @@
 				2F016C061D17E663009A7089 /* Info.plist */,
 			);
 			path = RWLoopScrollViewUITests;
+			sourceTree = "<group>";
+		};
+		2F016C121D17E6EA009A7089 /* RWLoopScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				2F016C131D17E6EA009A7089 /* RWLoopScrollView.h */,
+				2F016C141D17E6EA009A7089 /* RWLoopScrollView.m */,
+			);
+			path = RWLoopScrollView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +285,7 @@
 			files = (
 				2F016BE71D17E663009A7089 /* ViewController.m in Sources */,
 				2F016BE41D17E663009A7089 /* AppDelegate.m in Sources */,
+				2F016C151D17E6EA009A7089 /* RWLoopScrollView.m in Sources */,
 				2F016BE11D17E663009A7089 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
