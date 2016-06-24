@@ -20,7 +20,7 @@ static void *kRWLoopScrollViewContainerAssociateKey = &kRWLoopScrollViewContaine
 @property (weak, nonatomic) UIView *midContainer;
 @property (weak, nonatomic) UIView *rightContainer;
 
-@property (assign, nonatomic) NSUInteger numberOfContent;
+@property (assign, nonatomic) NSInteger numberOfContent;
 
 @property (assign, nonatomic) NSInteger currentIndex;
 @property (assign, nonatomic) NSInteger previousIndex;
@@ -85,7 +85,7 @@ static void *kRWLoopScrollViewContainerAssociateKey = &kRWLoopScrollViewContaine
     UIView *midContent = objc_getAssociatedObject(self.midContainer, kRWLoopScrollViewContainerAssociateKey);
     UIView *rightContent = objc_getAssociatedObject(self.rightContainer, kRWLoopScrollViewContainerAssociateKey);
     
-
+    
     
     if ([self.delegate respondsToSelector:@selector(contentViewInLoopScrollView:)]) {
         if (!leftContent) {
@@ -132,7 +132,7 @@ static void *kRWLoopScrollViewContainerAssociateKey = &kRWLoopScrollViewContaine
     }
     
     if ([self.delegate respondsToSelector:@selector(numberOfContentInLoopScrollView:)]) {
-        NSUInteger n = [self.delegate numberOfContentInLoopScrollView:self];
+        NSInteger n = [self.delegate numberOfContentInLoopScrollView:self];
         self.scrollView.scrollEnabled = n > 1;
         self.numberOfContent = n;
     }
@@ -210,18 +210,26 @@ static void *kRWLoopScrollViewContainerAssociateKey = &kRWLoopScrollViewContaine
 }
 
 #pragma mark - Index
+- (void)setNumberOfContent:(NSInteger)numberOfContent {
+    if (numberOfContent < 0) {
+        numberOfContent = 0;
+    }
+    _numberOfContent = numberOfContent;
+}
+
 - (void)setCurrentIndex:(NSInteger)currentIndex {
-    _currentIndex = currentIndex;
     
     if (self.numberOfContent > 0) {
-        if (_currentIndex >= self.numberOfContent) {
-            _currentIndex = 0;
-        } else if (_currentIndex < 0) {
-            _currentIndex = self.numberOfContent - 1;
+        if (currentIndex >= self.numberOfContent) {
+            currentIndex = 0;
+        } else if (currentIndex < 0) {
+            currentIndex = self.numberOfContent - 1;
         }
     } else {
-        _currentIndex = 0;
+        currentIndex = 0;
     }
+    
+    _currentIndex = currentIndex;
     
     if ([self.delegate respondsToSelector:@selector(loopScrollView:didScrollToViewAtIndex:)]) {
         [self.delegate loopScrollView:self didScrollToViewAtIndex:_currentIndex];
@@ -229,31 +237,31 @@ static void *kRWLoopScrollViewContainerAssociateKey = &kRWLoopScrollViewContaine
 }
 
 - (void)setPreviousIndex:(NSInteger)previousIndex {
-    _previousIndex = previousIndex;
-    
     if (self.numberOfContent > 0) {
-        if (_previousIndex >= self.numberOfContent) {
-            _previousIndex = 0;
-        } else if (_currentIndex < 0) {
-            _previousIndex = self.numberOfContent - 1;
+        if (previousIndex >= self.numberOfContent) {
+            previousIndex = 0;
+        } else if (previousIndex < 0) {
+            previousIndex = self.numberOfContent - 1;
         }
     } else {
-        _previousIndex = 0;
+        previousIndex = 0;
     }
+    
+    _previousIndex = previousIndex;
 }
 
 - (void)setNextIndex:(NSInteger)nextIndex {
-    _nextIndex = nextIndex;
-    
     if (self.numberOfContent > 0) {
-        if (_nextIndex >= self.numberOfContent) {
-            _nextIndex = 0;
-        } else if (_nextIndex < 0) {
-            _nextIndex = self.numberOfContent - 1;
+        if (nextIndex >= self.numberOfContent) {
+            nextIndex = 0;
+        } else if (nextIndex < 0) {
+            nextIndex = self.numberOfContent - 1;
         }
     } else {
-        _nextIndex = 0;
+        nextIndex = 0;
     }
+    
+    _nextIndex = nextIndex;
 }
 
 #pragma mark - Scroll

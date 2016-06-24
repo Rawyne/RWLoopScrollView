@@ -11,12 +11,12 @@
 @class RWLoopScrollView;
 @protocol RWLoopScrollViewDelegate <NSObject>
 @required
-- (NSUInteger)numberOfContentInLoopScrollView:(RWLoopScrollView *)loopScrollView;
+- (NSInteger)numberOfContentInLoopScrollView:(RWLoopScrollView *)loopScrollView;
 - (UIView *)contentViewInLoopScrollView:(RWLoopScrollView *)loopScrollView;
 @optional
-- (void)loopScrollView:(RWLoopScrollView *)loopScrollView prepareDisplayContentView:(UIView *)view forIndex:(NSUInteger)index;
-- (void)loopScrollView:(RWLoopScrollView *)loopScrollView didTapViewForIndex:(NSUInteger)index;
-- (void)loopScrollView:(RWLoopScrollView *)loopScrollView didScrollToViewAtIndex:(NSUInteger)index;
+- (void)loopScrollView:(RWLoopScrollView *)loopScrollView prepareDisplayContentView:(UIView *)view forIndex:(NSInteger)index;
+- (void)loopScrollView:(RWLoopScrollView *)loopScrollView didTapViewForIndex:(NSInteger)index;
+- (void)loopScrollView:(RWLoopScrollView *)loopScrollView didScrollToViewAtIndex:(NSInteger)index;
 @end
 
 
